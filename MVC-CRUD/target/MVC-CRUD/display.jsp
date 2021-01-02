@@ -12,5 +12,6 @@
 </head>
 <body>
 <h1>hello display</h1>
+<h1>Result is : ${result}</h1>
 </body>
 </html>
