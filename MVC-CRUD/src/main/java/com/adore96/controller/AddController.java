@@ -18,14 +18,15 @@ public class AddController {
 
     @RequestMapping("/add")
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("Hello Print");
+        System.out.println("Add method called in AddController");
 
         int i = Integer.parseInt(request.getParameter("t1"));
         int j = Integer.parseInt(request.getParameter("t2"));
 
-        new AddService().add(i, j);
+        int k = new AddService().add(i, j);
 
         ModelAndView modelAndView = new ModelAndView();
+
         modelAndView.setViewName("display.jsp");
         modelAndView.addObject("result", k);
 
