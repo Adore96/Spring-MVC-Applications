@@ -12,9 +12,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class UserDAO {
     JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    UserDataBean userDataBean;
-
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
