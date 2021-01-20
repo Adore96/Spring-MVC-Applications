@@ -5,8 +5,11 @@
   Time: 10:47 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
-<head xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>DashBoard</title>
@@ -317,14 +320,14 @@
 <body>
 
 <!--<h1 th:text="${message}"></h1>-->
-<root xmlns:th="http://www.thymeleaf.org">
+<root>
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-4">
-                            <h2>Manage <b>Students</b></h2>
+                            <h2>Manage <b>Users</b></h2>
                         </div>
                         <div class="col-sm-8">
                             <a href="#" class="btn btn-warning" data-toggle="modal"
@@ -338,32 +341,55 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-hover">
+
+                <table border="2" width="70%" cellpadding="2" class="table table-striped table-hover" bgcolor="#a9a9a9">
                     <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
-                        <th>Mobile</th>
-                        <th>Role</th>
-                    </tr>
+                    <th><b>Id</b></th>
+                    <th><b>Name</b></th>
+                    <th><b>Username</b></th>
+                    <th><b>Telephone</b></th>
+                    <th><b>RoleId</b></th>
+                    <th><b>Edit Action</b></th>
+                    <th><b>Delete Action</b></th>
                     </thead>
 
-                    <tbody>
-                    <tr th:each="dataBean : ${dataBean}">
-                        <td><span th:text="${dataBean.id}"></span></td>
-                        <td><span th:text="${dataBean.fname}"></span></td>
-                        <td><span th:text="${dataBean.lname}"></span></td>
-                        <td><span th:text="${dataBean.username}"></span></td>
-                        <td><span th:text="${dataBean.telephone}"></span></td>
-                        <td><span th:text="${dataBean.roleid}"></span></td>
-
-                        <td><a th:href="@{/EditStudent/{id}(id=${dataBean.id})}">Edit</a><br>
-                            <a th:href="@{/DeleteStudent/{id}(id=${dataBean.id})}">Delete</a>
-                    </tr>
-                    </tbody>
+                    <c:forEach var="user" items="${list}">
+                        <tbody>
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.username}</td>
+                        <td>${user.telephone}</td>
+                        <td>${user.roleid}</td>
+                        <td><a href="edituser/${user.id}">Edit</a></td>
+                        <td><a href="deleteuser/${user.id}">Delete</a></td>
+                        </tbody>
+                    </c:forEach>
                 </table>
+                <%--                <table class="table table-striped table-hover">--%>
+                <%--                    <thead>--%>
+                <%--                    <tr>--%>
+                <%--                        <th>Id</th>--%>
+                <%--                        <th>Name</th>--%>
+                <%--                        <th>Username</th>--%>
+                <%--                        <th>Mobile</th>--%>
+                <%--                        <th>Role Id</th>--%>
+                <%--                    </tr>--%>
+                <%--                    </thead>--%>
+
+                <%--                    <tbody>--%>
+                <%--                    <tr th:each="dataBean : ${dataBean}">--%>
+                <%--                        <td><span th:text="${dataBean.id}"></span></td>--%>
+                <%--                        <td><span th:text="${dataBean.fname}"></span></td>--%>
+                <%--                        <td><span th:text="${dataBean.lname}"></span></td>--%>
+                <%--                        <td><span th:text="${dataBean.username}"></span></td>--%>
+                <%--                        <td><span th:text="${dataBean.telephone}"></span></td>--%>
+                <%--                        <td><span th:text="${dataBean.roleid}"></span></td>--%>
+
+                <%--                        <td><a th:href="@{/EditStudent/{id}(id=${dataBean.id})}">Edit</a><br>--%>
+                <%--                            <a th:href="@{/DeleteStudent/{id}(id=${dataBean.id})}">Delete</a>--%>
+                <%--                    </tr>--%>
+                <%--                    </tbody>--%>
+                <%--                </table>--%>
             </div>
         </div>
     </div>
@@ -392,7 +418,7 @@
     </div>
 </div>
 
-<!-- Add New Student  -->
+<!-- Add New Student -->
 <div id="addNewStudentModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -4,10 +4,14 @@ import com.adore96.bean.UserDataBean;
 import com.adore96.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 /**
- * @author kalharaperera ON 1/4/21
+ * @author Kasun_K ON 1/4/21
  * @project MVC-CRUD
  */
 
@@ -17,28 +21,44 @@ public class UserController {
     @Autowired
     UserDAO userDAO;
 
-    @RequestMapping("signup")
-    public String signup(UserDataBean userDataBean) {
-        userDataBean.getName();
-        userDataBean.getTelephone();
-        userDAO.save(userDataBean);
-        System.out.println("signup method called in UserController");
+//    @RequestMapping("login")
+//    public RedirectView login(UserDataBean userDataBean) {
+//        System.out.println("[INFO] Signup method in UserController");
+//        if (userDAO.save(userDataBean)==1){
+//            System.out.println("[INFO] Data was inserted successfully.");
+//        }else {
+//            System.out.println("[INFO] Data was not inserted");
+//        }
+//        return new RedirectView("/MVC_CRUD_war_exploded/");
+//    }
 
-        return "indexx";
+    @RequestMapping("signup")
+    public RedirectView signup(UserDataBean userDataBean) {
+        System.out.println("[INFO] Signup method in UserController");
+        if (userDAO.save(userDataBean)==1){
+            System.out.println("[INFO] Data was inserted successfully.");
+        }else {
+            System.out.println("[INFO] Data was not inserted");
+        }
+        return new RedirectView("/MVC_CRUD_war_exploded/");
     }
-//
-//    @RequestMapping("/edit")
-//    public void edit(){
-//
-//    }
-//
-//    @RequestMapping("/delete")
-//    public void delete(){
-//
-//    }
-//
-//    @RequestMapping("/report")
-//    public String report(){
-//        return "display.jsp";
-//    }
+
+    @RequestMapping(value="/editemp/{id}")
+    public String edit(@PathVariable int id, Model m){
+        Emp emp=dao.getEmpById(id);
+        m.addAttribute("command",emp);
+        return "empeditform";
+    }
+
+    /* It deletes record for the given id in URL and redirects to /viewemp */
+    @RequestMapping(value="/deleteemp/{id}",method = RequestMethod.GET)
+    public String delete(@PathVariable int id){
+        dao.delete(id);
+        return "redirect:/viewemp";
+    }
+
+
+
+
+
 }

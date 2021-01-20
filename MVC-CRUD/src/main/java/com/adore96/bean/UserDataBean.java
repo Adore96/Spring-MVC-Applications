@@ -1,7 +1,9 @@
 package com.adore96.bean;
 
+import org.springframework.context.annotation.Bean;
+
 /**
- * @author wdwad ON 1/19/21
+ * @author Kasun_K ON 1/19/21
  * @project MVC-CRUD
  */
 

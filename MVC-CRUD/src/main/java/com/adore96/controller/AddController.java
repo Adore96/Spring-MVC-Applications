@@ -3,11 +3,11 @@ package com.adore96.controller;
 import org.springframework.stereotype.Controller;
 
 /**
- * @author kalharaperera ON 12/30/20
+ * @author Kasun_K ON 12/30/20
  * @project MVC-CRUD
  */
 
-@Controller
+
 public class AddController {
 
 //    @RequestMapping("/add")
