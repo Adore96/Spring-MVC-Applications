@@ -9,10 +9,10 @@
 
     <context:component-scan base-package="com.adore96.controller"></context:component-scan>
 
-<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-<!--        <property name="prefix" value="/"></property>-->
-<!--        <property name="suffix" value=".jsp"></property>-->
-<!--    </bean>-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
 
     <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
