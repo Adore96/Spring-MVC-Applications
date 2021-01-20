@@ -403,12 +403,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" class="form-control" name="fname" required>
-                    </div>
-                    <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" name="lname" required>
+                        <input type="text" class="form-control" name="name" required>
                     </div>
                     <div class="form-group">
                         <label>User Name</label>

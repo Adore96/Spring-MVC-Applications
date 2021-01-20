@@ -11,6 +11,15 @@ public class UserDataBean {
     private String username;
     private String password;
     private int telephone;
+    private int roleid;
+
+    public int getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(int roleid) {
+        this.roleid = roleid;
+    }
 
     public int getTelephone() {
         return telephone;
@@ -19,8 +28,6 @@ public class UserDataBean {
     public void setTelephone(int telephone) {
         this.telephone = telephone;
     }
-
-    private String role;
 
     public int getId() {
         return id;
@@ -54,11 +61,4 @@ public class UserDataBean {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }

@@ -16,7 +16,7 @@ public class UserDAO {
     }
 
     public int save(UserDataBean userDataBean) {
-        String sql = "insert into user(name,username,password,telephone,role) values('" + userDataBean.getName() + "','" + userDataBean.getUsername() + "','" + userDataBean.getPassword() + "','" + userDataBean.getTelephone() + "','" + userDataBean.getRole() + "')";
+        String sql = "insert into user(name,username,password,telephone,roleid) values('" + userDataBean.getName() + "','" + userDataBean.getUsername() + "','" + userDataBean.getPassword() + "','" + userDataBean.getTelephone() + "','" + userDataBean.getRoleid() + "')";
         return jdbcTemplate.update(sql);
     }
 

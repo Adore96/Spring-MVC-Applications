@@ -1,6 +1,10 @@
 package com.adore96.controller;
 
+import com.adore96.bean.UserDataBean;
+import com.adore96.dao.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author kalharaperera ON 1/4/21
@@ -10,10 +14,18 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class UserController {
 
-//    @RequestMapping("/register")
-//    public void register(){
-//
-//    }
+    @Autowired
+    UserDAO userDAO;
+
+    @RequestMapping("signup")
+    public String signup(UserDataBean userDataBean) {
+        userDataBean.getName();
+        userDataBean.getTelephone();
+        userDAO.save(userDataBean);
+        System.out.println("signup method called in UserController");
+
+        return "indexx";
+    }
 //
 //    @RequestMapping("/edit")
 //    public void edit(){
