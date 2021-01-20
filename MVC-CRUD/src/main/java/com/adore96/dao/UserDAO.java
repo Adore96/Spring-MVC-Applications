@@ -1,7 +1,6 @@
 package com.adore96.dao;
 
 import com.adore96.bean.UserDataBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -16,8 +15,8 @@ public class UserDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public int save(UserDataBean userDataBean){
-        String sql="insert into user(name,username,password,telephone,role) values('"+userDataBean.getName()+"','"+userDataBean.getUsername()+"','"+userDataBean.getPassword()+"','"+userDataBean.getTelephone()+"','"+userDataBean.getRole()+"')";
+    public int save(UserDataBean userDataBean) {
+        String sql = "insert into user(name,username,password,telephone,role) values('" + userDataBean.getName() + "','" + userDataBean.getUsername() + "','" + userDataBean.getPassword() + "','" + userDataBean.getTelephone() + "','" + userDataBean.getRole() + "')";
         return jdbcTemplate.update(sql);
     }
 

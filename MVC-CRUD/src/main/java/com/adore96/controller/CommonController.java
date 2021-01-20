@@ -18,6 +18,6 @@ public class CommonController {
     public String index() {
         System.out.println("Add method called in AddController");
 
-        return "index.jsp";
+        return "login";
     }
 }
