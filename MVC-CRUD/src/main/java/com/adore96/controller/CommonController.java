@@ -23,7 +23,7 @@ public class CommonController {
     @RequestMapping("/")
     public String userList(Model model) {
         System.out.println("UserList method Called.");
-        List<UserDataBean> list = userDAO.studentList();
+        List<UserDataBean> list = userDAO.userList();
         model.addAttribute("list", list);
         return "indexx";
     }

@@ -5,7 +5,9 @@ import com.adore96.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -43,18 +45,18 @@ public class UserController {
         return new RedirectView("/MVC_CRUD_war_exploded/");
     }
 
-    @RequestMapping(value="/editemp/{id}")
-    public String edit(@PathVariable int id, Model m){
-        Emp emp=dao.getEmpById(id);
-        m.addAttribute("command",emp);
-        return "empeditform";
+    @RequestMapping(value="/edituser/{id}")
+    public String edit(@PathVariable int id, Model model){
+        UserDataBean emp=userDAO.getuserById(id);
+        model.addAttribute("command",emp);
+        return "UserUpdate";
     }
 
     /* It deletes record for the given id in URL and redirects to /viewemp */
-    @RequestMapping(value="/deleteemp/{id}",method = RequestMethod.GET)
-    public String delete(@PathVariable int id){
-        dao.delete(id);
-        return "redirect:/viewemp";
+    @RequestMapping(value="/deleteuser/{id}",method = RequestMethod.GET)
+    public RedirectView delete(@PathVariable int id){
+        userDAO.delete(id);
+        return new RedirectView("/MVC_CRUD_war_exploded/");
     }
 
 
