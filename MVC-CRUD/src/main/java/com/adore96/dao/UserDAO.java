@@ -26,19 +26,20 @@ public class UserDAO {
         return jdbcTemplate.update(sql);
     }
 
-//    public int update(Emp p){
-//        String sql="update Emp99 set name='"+p.getName()+"', salary="+p.getSalary()+",designation='"+p.getDesignation()+"' where id="+p.getId()+"";
-//        return template.update(sql);
-//    }
-    public int delete(int id){
-        String sql="delete from user where id="+id+"";
+    public int update(UserDataBean userDataBean) {
+        String sql = "update user set name='" + userDataBean.getName() + "', telephone=" + userDataBean.getTelephone() + ",roleid='" + userDataBean.getRoleid() + "' where id=" + userDataBean.getId() + "";
+        return jdbcTemplate.update(sql);
+    }
+
+    public int delete(int id) {
+        String sql = "delete from user where id=" + id + "";
         return jdbcTemplate.update(sql);
     }
 
     //when editing and deleting the user
-    public UserDataBean getuserById(int id){
-        String sql="select * from user where id=?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<UserDataBean>(UserDataBean.class));
+    public UserDataBean getuserById(int id) {
+        String sql = "select * from user where id=?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<UserDataBean>(UserDataBean.class));
     }
 
     public List<UserDataBean> userList() {

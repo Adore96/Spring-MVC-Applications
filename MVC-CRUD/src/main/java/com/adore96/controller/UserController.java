@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.List;
-
 /**
  * @author Kasun_K ON 1/4/21
  * @project MVC-CRUD
@@ -37,30 +35,34 @@ public class UserController {
     @RequestMapping("signup")
     public RedirectView signup(UserDataBean userDataBean) {
         System.out.println("[INFO] Signup method in UserController");
-        if (userDAO.save(userDataBean)==1){
+        if (userDAO.save(userDataBean) == 1) {
             System.out.println("[INFO] Data was inserted successfully.");
-        }else {
+        } else {
             System.out.println("[INFO] Data was not inserted");
         }
         return new RedirectView("/MVC_CRUD_war_exploded/");
     }
 
-    @RequestMapping(value="/edituser/{id}")
-    public String edit(@PathVariable int id, Model model){
-        UserDataBean emp=userDAO.getuserById(id);
-        model.addAttribute("command",emp);
+    @RequestMapping(value = "/edituser/{id}")
+    public String edit(@PathVariable int id, Model model) {
+        UserDataBean emp = userDAO.getuserById(id);
+        model.addAttribute("command", emp);
         return "UserUpdate";
     }
 
     /* It deletes record for the given id in URL and redirects to /viewemp */
-    @RequestMapping(value="/deleteuser/{id}",method = RequestMethod.GET)
-    public RedirectView delete(@PathVariable int id){
+    @RequestMapping(value = "/deleteuser/{id}", method = RequestMethod.GET)
+    public RedirectView delete(@PathVariable int id) {
         userDAO.delete(id);
         return new RedirectView("/MVC_CRUD_war_exploded/");
     }
 
-
-
+    /* It updates model object. */
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    public String updateUser(@ModelAttribute("user") UserDataBean userDataBean) {
+        userDAO.update(userDataBean);
+        return new RedirectView("/MVC_CRUD_war_exploded/");
+    }
 
 
 }
